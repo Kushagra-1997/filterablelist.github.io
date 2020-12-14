@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filterable Lists</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" integrity="sha512-UJfAaOlIRtdR+0P6C3KUoTDAxVTuy3lnSXLyLKlHYJlcSU8Juge/mjeaxDNMlw9LgeIotgz5FP8eUQPhX1q10A==" crossorigin="anonymous" />
+</head>
+<body>
+  <div class="container">
+    <h1 class="center-align">
+      My Contacts
+    </h1>
+    <input type="text" id="filterInput" placeholder="Search names...">
+    <ul class="collection with-header" id="names">
+      <li class="collection-header">
+        <h5>A</h5>
+      </li>
+      <li class="collection-item">
+        <a href="#!">Alex</a>
+      </li>
+      <li class="collection-item">
+        <a href="#!">Ashu</a>
+      </li>
+      <li class="collection-item">
+        <a href="#!">Angad</a>
+      </li>
+      <li class="collection-item">
+        <a href="#!">Angara</a>
+      </li>
+      <li class="collection-header">
+        <h5>B</h5>
+      </li>
+      <li class="collection-item">
+        <a href="#!">bali</a>
+      </li>
+      <li class="collection-item">
+        <a href="#!">bansal</a>
+      </li>
+      <li class="collection-item">
+        <a href="#!">bittu</a>
+      </li>
+      <li class="collection-item">
+        <a href="#!">babli</a>
+      </li>
+      <li class="collection-header">
+        <h5>C</h5>
+      </li>
+      <li class="collection-item">
+        <a href="#!">calvin</a>
+      </li>
+      <li class="collection-item">
+        <a href="#!">cash</a>
+      </li>
+      <li class="collection-item">
+        <a href="#!">cishor</a>
+      </li>
+      <li class="collection-item">
+        <a href="#!">cancel</a>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    // get input element
+    let filterInput = document.getElementById('filterInput');
+    // add event listener
+    filterInput.addEventListener('keyup', filterNames);
+
+    function filterNames(){
+      // get input value
+      let filterValue = document.getElementById('filterInput').value.toUpperCase();
+
+      // GET NAMES UL
+      let ul = document.getElementById('names');
+
+      // get lis from ul
+      
+      let li = ul.querySelectorAll('li.collection-item');
+
+      // loop through collection-item lis
+
+      for(let i=0; i<li.length ; i++){
+        let a = li[i].getElementsByTagName('a')[0];
+//if matched 
+        if(a.innerHTML.toUpperCase().indexOf(filterValue)>-1){
+          li[i].style.display = '';
+        }
+        else{
+          li[i].style.display= 'none';
+        }
+      }
+    }
+  </script>
+</body>
+</html>
